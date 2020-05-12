@@ -1,0 +1,315 @@
+/*Global definisions*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}  
+html, body {
+  width: 100vw;
+  height: 100vh;
+  font-size: 12px;
+  overflow: hidden;
+}
+html{
+  background-image: linear-gradient(135deg, rgba(255, 160, 122, .4), rgba(180, 180, 180, .4));
+  overflow: hidden;
+}
+
+/*Search-bar*/
+.search-box{
+  position: relative;
+  margin: auto;
+  top: 5%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+  height: 100px;
+}
+.search-box .search {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  background: 	rgb(192,192,192);
+  border-radius: 50%;
+  transition: all 1s;
+  z-index: 4;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+}
+.search-box .search:hover{
+  cursor: pointer;
+}
+.search-box .search::before{
+  content: "";
+  position: absolute;
+  margin: auto;
+  top: 22px;
+  right: 0;
+  bottom: 0;
+  left: 22px;
+  width: 12px;
+  height: 2px;
+  background: white;
+  transform: rotate(45deg);
+  transition: all .5s;
+}
+.search-box .search::after{
+  content: "";
+  position: absolute;
+  margin: auto;
+  top: -5px;
+  right: 0;
+  bottom: 0;
+  left: -5px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid white;
+  transition: all .5s;
+}
+.search-bar{
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 35px;
+  height: 35px;
+  outline: none;
+  border: none;
+  background: 	rgb(192,192,192);
+  color: white;
+  text-shadow: 0 0 10px 	rgb(192,192,192);
+  padding: 0 80px 0 20px;
+  border-radius: 30px;
+  box-shadow: 0 20px 25px 0 rgba(0, 0, 0, 0.2);
+  transition: all 1s;
+  opacity: 0;
+  z-index: 5;
+  font-weight: bolder;
+  letter-spacing: 0.1em;
+}
+.search-bar:hover{
+  cursor: pointer;
+}
+.search-bar:focus {
+  width: 300px;
+  opacity: 1;
+  cursor: text;
+}
+.search-bar:focus ~ .search{
+  right: -250px;
+  background: white;
+  z-index: 6;
+}
+.search-bar:focus ~ .search::before{
+  top: 0;
+  left: 0;
+  width: 25px;
+  background: 	rgb(192,192,192);
+}
+.search-bar:focus ~ .search::after{
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 2px;
+  border: none;
+  background: 	rgb(192,192,192);
+  border-radius: 0%;
+  transform: rotate(-45deg);
+}
+.search-bar::placeholder{
+  color: white;
+  opacity: 0.5;
+  font-weight: bolder;
+}
+
+/*Suggestions*/
+.suggestions {
+  position: relative;
+  margin: auto;
+  width: 250px;
+  top: calc(10% + 55px);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.suggestions li {
+  background: white;
+  list-style: none;
+  border-bottom: 1px solid #D8D8D8;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+  margin: 0;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  transition: background 0.2s;
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+}
+
+.suggestions li:nth-child(even) {
+  transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
+  background: linear-gradient(to bottom,  #ffffff 0%,#EFEFEF 100%);
+}
+
+.suggestions li:nth-child(odd) {
+  transform: perspective(100px) rotateX(-3deg) translateY(3px);
+  background: linear-gradient(to top,  #ffffff 0%,#EFEFEF 100%);
+}
+
+/*Weather block display*/
+.slider-wrapper{
+  position: relative;
+  top: 15%;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  height: 60%;
+  width: 100%;
+}
+.weather-box{
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+  width: 60%;
+  height: 100%;
+  background-image: url(../img/generic.jpg);
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.8);
+  border-radius: 25px;
+}
+.weather-box .top{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 25px 25px 0 0; 
+  position: relative;
+  width: 100%;
+  height: 75%;
+  padding: 5%;
+  background-color: rgba(180, 180, 180, 0.5);
+}
+.weather-box .top .city{
+  width: 70%;
+  margin-bottom: 5%;
+  padding-left: 5%;
+  position: relative;
+  font-size: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+}
+.weather-box .top .temp{
+  width: 70%;
+  padding-left: 5%;
+  position: relative;
+  font-size: 7.5rem;
+}
+.weather-box .top .temp div{
+  display: flex;
+}
+.weather-box .top .cross{
+  position: absolute;
+  right: 35px;
+  top: 35px;
+  width: 35px;
+  height: 35px;
+  opacity: 0.3;
+}
+.weather-box .top .cross:hover {
+  opacity: 1;
+}
+.weather-box .top .cross:before, .cross:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  background-color: black;
+}
+.weather-box .top .cross:before {
+  transform: rotate(45deg);
+}
+.weather-box .top .cross:after {
+  transform: rotate(-45deg);
+}
+.weather-box .top .minmax{
+  font-size: 2.2rem;
+}
+.weather-box .top .minmax span{
+  margin-right: 10px;
+}
+.weather-box .top img{
+  height: 48px;
+  width: 48px;
+  margin-right: 15px;
+}
+.weather-box .bottom{
+  display: flex;
+  border-radius:  0 0 25px 25px; 
+  position: relative;
+  width: 100%;
+  height: 25%;
+  font-size: 1.5rem;
+  background-color: rgba(180, 180, 180, 0.7);
+}
+.weather-box .bottom .more{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 100%;
+  width: 25%;
+  background-color: rgba(180, 180, 180, 0.5);
+  border-radius:  0 0 0 25px; 
+}
+.weather-box .bottom .forecast{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 75%; 
+}
+.weather-box .bottom .forecast div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.weather-box .bottom .forecast span{
+  text-align: center;
+}
+.weather-box .bottom .forecast img{
+  margin: auto;
+}
+
+/* Slider */
+.slick-active .top .city{
+  transition: all 1s;
+  font-size: 2rem;
+}
+.weather-box .top .temp{
+  transition: all 1s;
+  font-size: 8.5rem;
+}
+.slick-active .top .minmax{
+  transition: all 1s;
+  font-size: 2.8rem;
+}
+.slick-active .bottom{
+  transition: all 1s;
+  font-size: 2rem;
+}
+.slick-track{
+  display: flex;
+  align-items: center;
+}
